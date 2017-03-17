@@ -18,7 +18,7 @@ public class WaveView extends LinearLayout {
 
     private int mAboveWaveColor;
     private int mMiddleWaveColor;
-    private int mBlowWaveColor;
+    private int mBelowWaveColor;
     private int mProgress;
     private int mWaveHeight;
     private int mWaveMultiple;
@@ -41,7 +41,7 @@ public class WaveView extends LinearLayout {
         final TypedArray attributes = context.getTheme().obtainStyledAttributes(attrs, R.styleable.WaveView, R.attr.waveViewStyle, 0);
         mAboveWaveColor = attributes.getColor(R.styleable.WaveView_above_wave_color, DEFAULT_ABOVE_WAVE_COLOR);
         mMiddleWaveColor = attributes.getColor(R.styleable.WaveView_middle_wave_color, DEFAULT_MIDDLE_WAVE_COLOR);
-        mBlowWaveColor = attributes.getColor(R.styleable.WaveView_blow_wave_color, DEFAULT_BLOW_WAVE_COLOR);
+        mBelowWaveColor = attributes.getColor(R.styleable.WaveView_below_wave_color, DEFAULT_BLOW_WAVE_COLOR);
         mProgress = attributes.getInt(R.styleable.WaveView_progress, DEFAULT_PROGRESS);
         mWaveHeight = attributes.getInt(R.styleable.WaveView_wave_height, MIDDLE);
         mWaveMultiple = attributes.getInt(R.styleable.WaveView_wave_length, LARGE);
@@ -52,7 +52,7 @@ public class WaveView extends LinearLayout {
         mWave.initializeWaveSize(mWaveMultiple, mWaveHeight, mWaveHz);
         mWave.setAboveWaveColor(mAboveWaveColor);
         mWave.setMiddleWaveColor(mMiddleWaveColor);
-        mWave.setBlowWaveColor(mBlowWaveColor);
+        mWave.setBlowWaveColor(mBelowWaveColor);
         mWave.initializePainters();
 
         mSolid = new Solid(context, null);

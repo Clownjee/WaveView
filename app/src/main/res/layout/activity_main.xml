@@ -8,16 +8,26 @@
     tools:context="com.clownjee.waveview.MainActivity">
 
     <com.clownjee.waveview.waveview.WaveView
-        android:id="@+id/wave_view"
+        android:id="@+id/waveview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F2F2F2"
         wave:above_wave_color="@android:color/holo_blue_bright"
-        wave:blow_wave_color="@android:color/background_dark"
+        wave:below_wave_color="@android:color/background_dark"
         wave:middle_wave_color="@android:color/holo_red_light"
         wave:progress="80"
         wave:wave_height="large"
         wave:wave_hz="normal"
         wave:wave_length="middle"/>
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="620dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:max="100"
+        android:progress="80"
+        />
 
 </RelativeLayout>

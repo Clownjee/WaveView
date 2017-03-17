@@ -26,22 +26,22 @@ class Wave extends View {
 
     public final int DEFAULT_ABOVE_WAVE_ALPHA = 80;
     public final int DEFAULT_MIDDLE_WAVE_ALPHA = 45;
-    public final int DEFAULT_BLOW_WAVE_ALPHA = 20;
+    public final int DEFAULT_BELOW_WAVE_ALPHA = 20;
 
     private final float X_SPACE = 40;
     private final double PI2 = 2 * Math.PI;
 
     private Path mAboveWavePath = new Path();
     private Path mMiddleWavePath = new Path();
-    private Path mBlowWavePath = new Path();
+    private Path mBelowWavePath = new Path();
 
     private Paint mAboveWavePaint = new Paint();
     private Paint mMiddleWavePaint = new Paint();
-    private Paint mBlowWavePaint = new Paint();
+    private Paint mBelowWavePaint = new Paint();
 
     private int mAboveWaveColor;
     private int mMiddleWaveColor;
-    private int mBlowWaveColor;
+    private int mBelowWaveColor;
 
     private float mWaveMultiple;
     private float mWaveLength;
@@ -52,7 +52,7 @@ class Wave extends View {
     // wave animation
     private float mAboveOffset = 0.0f;
     private float mMiddleOffset;
-    private float mBlowOffset;
+    private float mBelowOffset;
 
     private RefreshProgressRunnable mRefreshProgressRunnable;
 
@@ -72,7 +72,7 @@ class Wave extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawPath(mBlowWavePath, mBlowWavePaint);
+        canvas.drawPath(mBelowWavePath, mBelowWavePaint);
         canvas.drawPath(mMiddleWavePath, mMiddleWavePaint);
         canvas.drawPath(mAboveWavePath, mAboveWavePaint);
     }
@@ -86,7 +86,7 @@ class Wave extends View {
     }
 
     public void setBlowWaveColor(int blowWaveColor) {
-        this.mBlowWaveColor = blowWaveColor;
+        this.mBelowWaveColor = blowWaveColor;
     }
 
     public Paint getAboveWavePaint() {
@@ -98,7 +98,7 @@ class Wave extends View {
     }
 
     public Paint getBlowWavePaint() {
-        return mBlowWavePaint;
+        return mBelowWavePaint;
     }
 
     public void initializeWaveSize(int waveMultiple, int waveHeight, int waveHz) {
@@ -106,7 +106,7 @@ class Wave extends View {
         mWaveHeight = getWaveHeight(waveHeight);
         mWaveHz = getWaveHz(waveHz);
         mMiddleOffset = mWaveHeight * 0.4f;
-        mBlowOffset = mWaveHeight * 0.8f;
+        mBelowOffset = mWaveHeight * 0.8f;
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 mWaveHeight * 2);
         setLayoutParams(params);
@@ -123,10 +123,10 @@ class Wave extends View {
         mMiddleWavePaint.setStyle(Paint.Style.FILL);
         mMiddleWavePaint.setAntiAlias(true);
 
-        mBlowWavePaint.setColor(mBlowWaveColor);
-        mBlowWavePaint.setAlpha(DEFAULT_BLOW_WAVE_ALPHA);
-        mBlowWavePaint.setStyle(Paint.Style.FILL);
-        mBlowWavePaint.setAntiAlias(true);
+        mBelowWavePaint.setColor(mBelowWaveColor);
+        mBelowWavePaint.setAlpha(DEFAULT_BELOW_WAVE_ALPHA);
+        mBelowWavePaint.setStyle(Paint.Style.FILL);
+        mBelowWavePaint.setAntiAlias(true);
     }
 
     private float getWaveMultiple(int size) {
@@ -171,7 +171,7 @@ class Wave extends View {
     private void calculatePath() {
         mAboveWavePath.reset();
         mMiddleWavePath.reset();
-        mBlowWavePath.reset();
+        mBelowWavePath.reset();
 
         getWaveOffset();
 
@@ -190,12 +190,12 @@ class Wave extends View {
         }
         mMiddleWavePath.lineTo(right, bottom);
 
-        mBlowWavePath.moveTo(left, bottom);
+        mBelowWavePath.moveTo(left, bottom);
         for (float x = 0; x <= mMaxRight; x += X_SPACE) {
-            y = (float) (mWaveHeight * Math.sin(omega * x + mBlowOffset) + mWaveHeight);
-            mBlowWavePath.lineTo(x, y);
+            y = (float) (mWaveHeight * Math.sin(omega * x + mBelowOffset) + mWaveHeight);
+            mBelowWavePath.lineTo(x, y);
         }
-        mBlowWavePath.lineTo(right, bottom);
+        mBelowWavePath.lineTo(right, bottom);
     }
 
     @Override
@@ -246,10 +246,10 @@ class Wave extends View {
     }
 
     private void getWaveOffset() {
-        if (mBlowOffset > Float.MAX_VALUE - 100) {
-            mBlowOffset = 0;
+        if (mBelowOffset > Float.MAX_VALUE - 100) {
+            mBelowOffset = 0;
         } else {
-            mBlowOffset += mWaveHz;
+            mBelowOffset += mWaveHz;
         }
 
         if (mMiddleOffset > Float.MAX_VALUE - 100) {
