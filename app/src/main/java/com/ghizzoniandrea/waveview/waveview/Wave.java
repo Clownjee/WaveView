@@ -1,4 +1,4 @@
-package com.clownjee.waveview.waveview;
+package com.ghizzoniandrea.waveview.waveview;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.clownjee.waveview.R;
+import com.ghizzoniandrea.waveview.R;
 
 // y=Asin(ωx+φ)+k
 class Wave extends View {

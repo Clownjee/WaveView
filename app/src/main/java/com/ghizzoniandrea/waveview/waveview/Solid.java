@@ -1,4 +1,4 @@
-package com.clownjee.waveview.waveview;
+package com.ghizzoniandrea.waveview.waveview;
 
 import android.content.Context;
 import android.graphics.Canvas;

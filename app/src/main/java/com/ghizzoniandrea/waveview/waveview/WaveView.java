@@ -1,4 +1,4 @@
-package com.clownjee.waveview.waveview;
+package com.ghizzoniandrea.waveview.waveview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.clownjee.waveview.R;
+import com.ghizzoniandrea.waveview.R;
 
 public class WaveView extends LinearLayout {
     protected static final int LARGE = 1;

@@ -1,10 +1,10 @@
-package com.clownjee.waveview;
+package com.ghizzoniandrea.waveview;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.SeekBar;
 
-import com.clownjee.waveview.waveview.WaveView;
+import com.ghizzoniandrea.waveview.waveview.WaveView;
 
 public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
